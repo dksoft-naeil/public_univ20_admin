@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"  content="width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, maximum-scale=1.0" />
+  <meta name="title" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <link rel="icon" href="../../../resources/images/favicon.ico" />
+  <link rel="stylesheet" href="../../../resources/plugins/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/jquery-ui.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-time-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-date-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/dropzone/dropzone.min.css"  />
+  <link rel="stylesheet" href="../../../resources/plugins/cropper/cropper.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/froala/froala_editor.pkgd.min.css" />
+  <link rel="stylesheet" href="../../../resources/css/style.css" />
+  <script src="../../../resources/plugins/jquery-3.7.1.min.js"></script>
+  <script src="../../../resources/plugins/swiper/swiper-bundle.min.js"></script>
+  <script src="../../../resources/plugins/datepicker/jquery-ui.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-time-picker.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-date-picker.js"></script>
+  <script src="../../../resources/plugins/gsap/gsap.min.js"></script>
+  <script src="../../../resources/plugins/fontawesome/fontawesome.js"></script>
+  <script src="../../../resources/plugins/dropzone/dropzone.min.js"></script>
+  <script src="../../../resources/plugins/cropper/cropper.js"></script>
+  <script src="../../../resources/plugins/froala/froala_editor.pkgd.min.js"></script>
+  <script src="../../../resources/js/common-ui.js"></script>
+  <script src="../../../resources/js/base.js"></script>
+  <script src="../../../resources/js/voice.js"></script>
+  <script src="../../../resources/js/util.js"></script>
+  <title>관리자</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <!-- 헤더 -->
+    <header id="header">
+      <div class="header-inner">
+        <h1 class="header-logo">
+          <a href="../dashboard/index.html"><img src="../../../resources/images/layout/img-univ-logo.svg" alt="" class="img-logo" /></a>
+        </h1>
+        <div class="header-util">
+          <div class="header-user">
+            <div class="image">
+              <img src="../../../resources/images/layout/icon-user-image.png" alt="로그인이미지" />
+            </div>
+            <p class="name">홍길동(honggildong@abc.com)</p>
+          </div>
+          <div class="header-menu">
+         <div class="header-menu-item">
+              <a href="../login/change-password.html" title="비밀번호 변경" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-password.png" alt="비밀번호 아이콘" />
+                <span>비밀번호 변경</span>
+              </a>
+            </div>
+            <div class="header-menu-item" onclick="logout()">
+              <a href="javascript:void(0);" title="로그아웃" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-logout.png" alt="로그아웃 아이콘" />
+                <span>로그아웃</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="mobile-navigation-menu" onclick="window.mobileMenuController.open('','#sideBarContainer')">
+          <span class="icon"></span>
+        </button>
+      </div>
+    </header>
+  
+    <!-- 사이드바 -->
+    <div id="sideBarContainer">
+      <div class="sidebar-container" id="sideBarContainer">
+        <div class="mobile-head-box">
+          <button type="button" class="btn-close" onclick="window.mobileMenuController.close('', '#sideBarContainer')">닫기</button>
+          <!-- <button type="button" class="btn-close" onclick="alert('sidebar')">닫기</button> -->
+          <div class="info-area">
+            <div class="name-area">
+              <strong class="name">김에스케이</strong>
+              <div class="position">부문관리자</div>
+            </div>
+            <div class="util-info">SK이노베이션 / 기업문화 부문 / 인재영업팀</div>
+          </div>
+          <div class="btn-group">
+            <a href="../login/change-password.html" class="item">비밀번호 변경</a>
+            <a href="javascript:void(0);" class="item">로그아웃</a>
+          </div>
+        </div>
+        <button type="button" class="btn-sidebar-toggle">사이드바 토글 버튼</button>
+        <aside class="sidebar" id="sideBar">
+          <div class="nav-menu-container">
+            <div class="nav-menu-wrapper">
+              <div class="nav-menu active">
+                <a href="../dashboard/index.html" class="nav-menu-item solo">
+                  <span class="icon">
+                <img src="../../../resources/images/layout/icon-sidebar-dashboard.png" alt="" />
+              </span>
+                  <span class="text">대시보드</span>
+                </a>
+              </div>
+              <!-- 해당 메뉴일때 active 클래스 추가 -->
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">전체 공지</span>
+                </a>
+                <!-- 해당 메뉴일때 open 클래스 추가 -->
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../notice/popup-list.html">공지 팝업</a></div>
+                  <div class="sub-menu-item"><a href="../notice/notification-list.html">공지 알림</a></div>
+                </div>
+              </div>
+           <div class="nav-menu">
+                <a href="../ad-banner/ad-banner-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">광고 배너</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="../main/main-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-chart.png" alt="" /></span>
+                  <span class="text">메인 화면</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">매거진</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../magazine/magazine-article-register.html">기사 등록</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-list.html">전체 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-campus-list.html">캠퍼스 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-lifestyle-list.html">라이프스타일 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-career-list.html">커리어 기사</a></div>
+                </div>
+              </div>
+              <div class="nav-menu open active">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">글 쓰는 20대</span>
+                </a>
+                <div class="sub-menu open active">
+                  <div class="sub-menu-item"><a href="../voice/topic-of-month-list.html">이달의 주제</a></div>
+                  <div class="sub-menu-item active"><a href="../voice/all-article-list.html">전체 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-completed-article-list.html">작성 완료 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-mentoring-article-list.html">수정(첨삭)중 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/publish-article-list.html">발행 기사 </a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <!-- 서브 메뉴 없을경우 solo클래스 추가 -->
+                <a href="../story/story-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">대학생이 만든 매거진</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">커뮤니티</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../community/community-list-all.html">전체 글 </a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-daily.html">일상</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-romance.html">연애</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-course.html">진로</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-school.html">우리 학교</a></div>
+                  <div class="sub-menu-item"><a href="../community/notice-list.html">공지 목록</a></div>
+                </div>                
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-list-detail.png" alt="" /></span>
+                  <span class="text">캘린더</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../calendar/calendar-list.html">전체 캘린더</a></div>
+                  <div class="sub-menu-item"><a href="../calendar/before-accord-calendar-list.html">승인 대기 캘린더</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-mail.png" alt="" /></span>
+                  <span class="text">제보하기 /<br class="pc-show" />표지 모델 신청 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../report-proposal/report-list.html">제보하기</a></div>
+                  <div class="sub-menu-item"><a href="../report-proposal/proposal-list.html">표지 모델 신청</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-headset.png" alt="" /></span>
+                  <span class="text">공지사항/FAQ/<br class="pc-show" />문의신고</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../etc/notice-list.html">공지사항</a></div>
+                  <div class="sub-menu-item"><a href="../etc/FAQ-list.html">FAQ</a></div>
+                  <div class="sub-menu-item"><a href="../etc/qna-list.html">문의 / 신고</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ticket.png" alt="" /></span>
+                  <span class="text">이달의 미션 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../mission/mission-board.html">미션 현황</a></div>
+                  <div class="sub-menu-item"><a href="../mission/mission-completed-member-list.html">미션 달성 회원</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="../point/point-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ready.png" alt="" /></span>
+                  <span class="text">포인트 </span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-volunteer.png" alt="" /></span>
+                  <span class="text">멤버 관리 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../member/member-list.html">회원</a></div>
+                  <div class="sub-menu-item"><a href="../member/manager-list.html">관리자</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-plus-file.png" alt="" /></span>
+                  <span class="text">기초 자료 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../basic-data/school-list.html">학교 정보</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <!-- 컨텐츠 -->
+    <div id="pageWrapper">
+      <main id="mainContent">
+        <div class="page-title">
+          <h2 class="title">발행 기사 수정</h2>
+          <div class="breadcrumb">
+            <div class="icon-home"></div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">글 쓰는 20대</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">발행 기사</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">수정</div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">기본 설정</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">기사 공개</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="selector-wrapper horizontal">
+                        <label class="form-btn-selector"><input type="radio" name="publish-article-state"  value="public"/><span class="label">공개</span> </label>
+                        <label class="form-btn-selector"><input type="radio" name="publish-article-state"  value="private"/><span class="label">비공개</span> </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">대표 이미지</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">대표 이미지</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <!-- 수정 페이지에서의 대표이미지 수정 영역 -->
+                      <div class="thumbnail-upload-box">
+                        <div class="thumbnail-dropzone-box">
+                          <div class="dropzone" id="dropzone02">
+                            <div class="dz-message" data-dz-message>
+                              <span class="icon-box icon-picture">그림 아이콘</span>
+                              <span class="text">
+                                      썸네일로 등록할 이미지를<br class="mobile-show" />
+                                      이곳에 드래그하거나 클릭해서 등록
+                                    </span>
+                            </div>
+                          </div>
+                          <div class="cropzone-crop-box">
+                            <!-- 등록된 이미지 업로드 -->
+                            <img id="uploadImage" class="cropper-hidden" src="../../../resources/images/_temp/temp-inline-image01.png" alt="" />
+                          </div>
+                        </div>
+                        <!-- //thumbnail-dropzone-box -->
+                        <div class="cropzone-image-box "></div>
+                        <!-- //cropzone-image-box -->
+                        <div class="cropzone-control-box">
+                          <button type="button" class="btn medium full primary crop-save-btn">등록하기</button>
+                          <div class="half-box">
+                            <button type="button" class="btn medium full slightly crop-delete-btn">삭제하기</button>
+                            <button type="button" class="btn medium full primary crop-edit-btn">수정하기</button>
+                          </div>
+                        </div>
+                        <!-- //cropzone-control-box -->
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="form-guide-text">
+                    ※ 대표 이미지는 최대 1개까지 설정할 수 있습니다.<br />
+                      ※ 5MB 이하의 JPG, PNG, GIF 이미지만 등록 가능합니다.<br />
+                      ※ 권장하는 이미지 사이즈는 1056px * 584px 입니다.
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">제목 및 한 줄 소개 </strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">제목</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <input type="text" id="publish-article-title"  class="form-input" autocomplete="off" placeholder="50자 이내로 입력" maxlength="50" value="회원이 사용자에서 직접 등록한 기사 타이틀입니다. 최대 50자까지 등록 가능합니다." />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">한 줄 소개</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <input type="text" id="publish-article-summary"  class="form-input" autocomplete="off" placeholder="30자 이내로 입력" maxlength="30" value="회원이 등록한 기사 요약 내용. 최대 30자까지 등록." />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">본문 </strong>
+          </div>
+          <div class="editor-content-box">
+            <textarea  id="editor"></textarea>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">태그</strong>
+          </div>
+
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">태그 1</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">
+                        <input type="text" id="publish-article-tag1"  title="" class="form-input" autocomplete="off" placeholder="10자 이내로 입력" maxlength="10" value="태그입니다" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">태그 2</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">
+                        <input type="text" id="publish-article-tag2"  title="" class="form-input" autocomplete="off" placeholder="10자 이내로 입력" maxlength="10" value="태그입니다" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">태그 3</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">
+                        <input type="text" id="publish-article-tag3"  title="" class="form-input" autocomplete="off" placeholder="10자 이내로 입력" maxlength="10" value="태그입니다" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">댓글</strong>
+          </div>
+
+          <div class="table-info">
+            <div class="el">
+              <div class="total" style="display:flex; flex-direction:row">총 <div id="publish-comment-total"><strong>999</strong>건</div></div>
+            </div>
+          </div>
+          <div class="data-table">
+            <div class="table-inner">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="size-index">
+                      <div class="selector-cover checkbox solo">
+                        <label class="label">
+                          <input type="checkbox"   />
+                          <span class="label-text">
+                              <span class="selector"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </th>
+                    <th class="size-index">No.</th>
+                    <th class="size-title">내용</th>
+                    <th>좋아요</th>
+                    <th>작성자</th>
+                    <th class="size-date">등록일</th>
+                  </tr>
+                </thead>
+                <tbody id="publish-comment_grid">              
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="flex-box flex-spc-end mt20">
+            <a href="javascript:void(0);" class="btn small size-m primary round"> 삭제 </a>
+          </div>
+          <div id="pagination" class="pagination-container">
+            <ul class="pagination" id="publish-comment-pagination">             
+            </ul>
+          </div>
+
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">비슷한 기사 더 보기(선택) </strong>
+          </div>
+
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">기사 1</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">                        
+                        <input type="text" id="fixUrl"  title="" class="form-input" autocomplete="off"  placeholder="https://univ20.com/"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">기사 2</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">                       
+                        <input type="text" id="fixUrl02"  title="" class="form-input" autocomplete="off"  placeholder="https://univ20.com/"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex-box mt20"> 
+          <a href="javascript:void(0)" class="btn medium dark" onclick="publishPreview()">미리보기</a>
+        </div>
+
+        <div class="page-bottom-btn-group between">
+          <div class="item">
+            <a href="javascript:void(0);" class="btn medium dark border round" onclick="cancelPublishModify()"> 취소 </a>
+          </div>
+          <div class="item">
+            <a href="javascript:void(0);" class="btn medium primary round" onclick="checkPublishVocie()"> 수정 완료 </a>
+          </div>
+        </div>
+      </main>
+      <!-- 푸터 -->
+      <footer id="footer">
+        <div class="copyright">©UNIVTOMORROW. ALL RIGHTS RESERVED.</div>
+      </footer>
+
+      <!-- // 푸터 -->
+    </div>
+    <!-- //컨텐츠 -->
+  </div>
+
+  <!--이미지 첨부 및 크롭 수정 스크립트-->
+  <script>
+    // dropzone 라이브러리 참고 - https://docs.dropzone.dev/
+    // cropper.js 참고 https://fengyuanchen.github.io/cropperjs/
+    // 드래그존
+    var isModifiedFiles = false;
+    var dropzone02 = null;
+    var mainFile = null;
+    function dropzoneCropperEditScript(option) {
+      var id = option.id;
+      var minCroppedWidth = option.width;
+      var minCroppedHeight = option.height;
+      var maxCroppedWidth = option.width * 2;
+      var maxCroppedHeight = option.height * 2;
+      Dropzone.options[id] = {
+        url: baseUrl + '/voices', // url 경로
+        uploadMultiple: false, // 다중업로드 기능
+        addRemoveLinks: true, //삭제버튼 표시 여부
+        dictRemoveFile: '파일삭제', //삭제버튼 표시 텍스트
+        paramName: 'file', //서버에서 사용할 formdata 이름 설정 (default는 file)
+        autoProcessQueue: false, // 자동으로 보내기. true : 파일 업로드 되자마자 서버로 요청, false : 서버에는 올라가지 않은 상태. 따로 this.processQueue() 호출시 전송
+        maxFiles: 1, // 업로드 파일수
+        maxFilesize: 5, // MB 최대업로드용량 : 10 -> 100MB
+        // 하나씩 넘겨야 에러 없음
+        parallelUploads: 1, // 동시파일업로드 수(이걸 지정한 수 만큼 여러파일을 한번에 컨트롤러에 넘긴다.)
+        acceptedFiles: '.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF', // 이미지 파일 포맷만 허용
+        clickable: true, // 클릭가능여부
+        thumbnailWidth: null,
+        thumbnailHeight: null,
+
+        init: function() {
+          // 등록된 이미지 업로드
+          dropzone02 = this;
+
+          // 2개이상이면 기존 이미지 제거
+          this.on('maxfilesexceeded', function(file) {
+            this.removeAllFiles();
+            this.addFile(file);
+          });
+
+          this.on("addedfile", function(file, forceConfirm=false) { 
+            console.log('added => ' + file.name);
+            
+            let _this = this;
+            let _fileName = file.name;
+
+            mainFile = file;
+            if(forceConfirm) setTimeout(()=> { confirm(false) },100);
+
+            // 이미지 가저온 후 드롭존 이미지 제거
+            this.removeFile(file);
+
+            // Create an image node for Cropper.js
+            var image = new Image();
+            image.src = URL.createObjectURL(file);
+            var $uploadBox = $(this.element).closest('.thumbnail-upload-box');
+
+            $uploadBox.find('.cropzone-crop-box').append(image);
+            $uploadBox.find('.cropzone-crop-box').addClass('show');
+            // 버튼 활성화
+            $uploadBox.find('.cropzone-control-box').removeClass('active-edit');
+            $uploadBox.find('.cropzone-control-box').addClass('active');
+
+            // 등록하기
+            $uploadBox.find('.crop-save-btn').off('click');
+            $uploadBox.find('.crop-save-btn').on('click', function() {
+              confirm();
+            });
+
+            // 수정하기
+            $uploadBox.find('.crop-edit-btn').off('click');
+            $uploadBox.find('.crop-edit-btn').on('click', function() {
+              $uploadBox.find('.cropzone-crop-box').addClass('show');
+              $uploadBox.find('.cropzone-image-box').empty();
+              $uploadBox.find('.cropzone-image-box').removeClass('show');
+              // 버튼 활성화
+              $uploadBox.find('.cropzone-control-box').removeClass('active-edit');
+              $uploadBox.find('.cropzone-control-box').addClass('active');
+              // 드롭존 보이기
+              $uploadBox.find('.thumbnail-dropzone-box').removeClass('hide');
+              // 박스 크기 조절
+              $uploadBox.removeClass('crop');
+              cropper.onResize();
+            });
+
+            // 삭제하기
+            $uploadBox.find('.crop-delete-btn').off('click');
+            $uploadBox.find('.crop-delete-btn').on('click', function() {
+              if (file !== '') {
+                _this.removeAllFiles(file);
+              }
+
+              mainFile = null;
+              isModifiedFiles = true;
+
+              $uploadBox.find('.cropzone-crop-box, .cropzone-image-box').empty();
+              $uploadBox.find('.cropzone-crop-box, .cropzone-image-box').removeClass('show');
+              // 버튼 활성화
+              $uploadBox.find('.cropzone-control-box').removeClass('active-edit');
+              $uploadBox.find('.cropzone-control-box').removeClass('active');
+              // 드롭존 보이기
+              $uploadBox.find('.thumbnail-dropzone-box').removeClass('hide');
+              // 박스 크기 조절
+              $uploadBox.removeClass('crop');
+            });
+
+            // Create Cropper.js
+            var cropper = new Cropper(image, {
+              // https://calculator-online.net/ko/ratio-calculator/
+              // 1056 : 584 = 9 : 4.977
+              // 옵션
+              autoCropArea: 1,
+              aspectRatio: aspectRatio(option.width, option.height), // 비율
+              data: {
+                width: minCroppedWidth,
+                height: minCroppedHeight,
+              }, // 잘라낼 범위의 기본 값을 가로, 세로
+
+              ready() {
+                console.log('crop ready file' + file)
+                if (file == '') {
+                  console.log('file' + file) ;
+
+                  document.querySelector("#articleFile01").files=file;
+                  // 수정일경우 등록버튼 click trigger
+                  $('.thumbnail-upload-box').each(function() {
+                    if ($(this).find('.cropzone-crop-box').find('.cropper-hidden').length) {
+                      $(this).find('.crop-save-btn').click();
+                    }
+                  });
+                }
+
+                var cropper = this.cropper;
+                var containerData = cropper.getContainerData();
+                var cropBoxData = cropper.getCropBoxData();
+
+                // 정중앙 배치
+                cropper.setCropBoxData({
+                  top: containerData.height / 2 - cropBoxData.height / 2,
+                  left: containerData.width / 2 - cropBoxData.width / 2,
+                });
+              },
+
+              crop: function(event) {
+                var width = Math.round(event.detail.width);
+                var height = Math.round(event.detail.height);
+                if (width < minCroppedWidth || height < minCroppedHeight || width > maxCroppedWidth || height > maxCroppedHeight) {
+                  cropper.setData({
+                    width: Math.max(minCroppedWidth, Math.min(maxCroppedWidth, width)),
+                    height: Math.max(minCroppedHeight, Math.min(maxCroppedHeight, height)),
+                  });
+                }
+              },
+            });
+
+            function confirm(modified=true) {
+              let imgSrc = cropper.getCroppedCanvas({}).toDataURL();
+
+              // 수정 이미지 저장
+              const binary = atob(imgSrc.split(',')[1]);
+              const array = [];
+              for (let i = 0; i < binary.length; i++) {
+                array.push(binary.charCodeAt(i));
+              }
+
+              mainFile = new File([new Uint8Array(array)], _fileName, {type: 'image/png'});
+              isModifiedFiles = modified;
+
+              $uploadBox.find('.cropzone-image-box').empty();
+              $uploadBox.find('.cropzone-image-box').append('<img src="' + imgSrc + '" alt="" />');
+              $uploadBox.find('.cropzone-crop-box').removeClass('show');
+              $uploadBox.find('.cropzone-image-box').addClass('show');
+              // 버튼 활성화
+              $uploadBox.find('.cropzone-control-box').removeClass('active');
+              $uploadBox.find('.cropzone-control-box').addClass('active-edit');
+              // 드롭존 숨기기
+              $uploadBox.find('.thumbnail-dropzone-box').addClass('hide');
+              // 박스 크기 조절
+              $uploadBox.addClass('crop');
+            }
+
+            // 이미지 비율 계산
+            function aspectRatio(width, height) {
+              const gcd = (...arr) => {
+                const _gcd = (x, y) => (!y ? x : gcd(y, x % y));
+                return [...arr].reduce((a, b) => _gcd(a, b));
+              };
+
+              const gcdResult = gcd(width, height);
+
+              return width / gcdResult / (height / gcdResult);
+            }
+          });
+        },
+
+        error: function(file, errorMessage) {
+          if (errorMessage.indexOf('File is too big') !== -1) {
+            alert('업로드 가능한 파일 크기를 초과했습니다.');
+            // 업로드 실패한 파일 제거
+            this.removeFile(file);
+          } else if (errorMessage.indexOf("You can't upload files of this type") !== -1) {
+            alert('지원하지 않는 파일 형식입니다.');
+            // 업로드 실패한 파일 제거
+            this.removeFile(file);
+          } else {
+            // alert('파일 업로드 중 오류가 발생했습니다.');
+          }
+        },
+      };
+    }
+  </script>
+
+  <!-- 예시 에디터 스크립트-->
+  <script src="../../../resources/plugins/froala/nitro-min-ko.js"></script>
+  <script>
+    // $(document).ready(function() {
+      // Froala 라이브러리 참고 - https://froala.com/wysiwyg-editor/docs/options/
+      let toolbarSticyValue = $('#header').innerHeight();
+      var editorInstance = new FroalaEditor('#editor', {
+        enter: FroalaEditor.ENTER_DIV,
+        // 라이센스 키
+        key: 'lSA3D-17D1C1A1D1B1B1rXYb1VPUGRHYZNRJd1JVOOb1HAc1zG2B1A2C2D6B1E1C4E1D3==',
+        placeholderText: null,
+        toolbarSticky: true,
+        quickInsertEnabled: false, // 퀵 없애기
+        attribution: false, //하단 Powered by ~ 제거
+        charCounterCount: false, // 하단 문자 수 제거
+        language: 'ko',
+        // enter div
+        // enter: FroalaEditor.ENTER_DIV,
+        toolbarStickyOffset: toolbarSticyValue,
+
+        // 이미지 용량 제한
+        imageMaxSize: 1024 * 1024 * 5, // 5MB
+
+        // 텍스트 컬러 제한
+        colorsText: ['#111111', '#949494', '#F82514', 'REMOVE'],
+
+        // 폰트 사이즈
+        fontSize: ['10', '12', '14', '16', '18', '20', '24', '26', '28', '30'],
+
+        toolbarButtons: [
+          ['bold', 'italic', 'underline', 'fontSize', 'textColor', 'alignLeft', 'alignCenter', 'alignRight', 'insertLink', 'insertImage', 'html']
+        ],
+
+        events: {
+          initialized: function() {
+            const editor = this;
+            // this.el.closest('form').addEventListener('submit', function (e) {
+            //   console.log(editor.$oel.val());
+            //   e.preventDefault();
+            // });
+          },
+          "image.beforeUpload":  function(files) {
+              // Before image is uploaded
+              var editor = this;
+
+              if(!files?.length) return false;
+
+              const data = new FormData();
+              data.append('file', files[0], files[0].name);
+              fetch(baseUrl + "/file/register", 
+              {
+                method: "POST",
+                body: data,                  
+                headers: headers.form_headers.headers
+             })
+              .then(response => {  
+                response.json().then((response) => {                      
+                  editor.image.insert(response.data.url, null, null, editor.image.get());
+                });
+              })
+            .catch(err => {
+              console.log(err);
+            });
+
+            return false;
+          }
+        }
+      })
+          
+  </script>
+
+  <script>
+    // 이미지 첨부 및 크롭 스크립트
+    dropzoneCropperEditScript({
+      id: 'dropzone02',
+      width: 528, // 최소 width
+      height: 292, // 최소 height
+    });
+  </script>
+
+  <!-- 글쓰는20대 미리보기 팝업 -->
+  <div class="layer-popup full-scroll preview-popup" id="write20PreviewPopup">
+    <div class="popup-container large">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="sub-section-wrap article-content-area">
+            <div class="section-inner article-aside-inner">
+              <aside class="aside-content-box article-aside-content-box">
+                <div class="article-detail-info-box">
+                  <div class="profile-box">
+                    <div class="image">
+                      <!-- 프로필 사진을 등록하지 않았을 경우 img 제거  -->
+                      <!-- <img src="../../../resources/images/" alt="프로필 이미지" /> -->
+                    </div>
+                    <div class="info">
+                      <div class="nickname"><span class="name" id="publish-preview-name"></span> 에디터</div>
+                      <div class="address" id="publish-preview-email"></div>
+                    </div>
+                  </div>
+                  <div class="info-box">
+                    <div class="flow">
+                      <span>매거진</span>
+                      <i class="icon-box icon-arrow-flow-right">></i>
+                      <span id="publish-preview-category"></span>
+                    </div>
+                    <div class="date">
+                      <span class="label">작성일</span>
+                      <span class="text" id="publish-preview-create-date"></span>
+                    </div>
+                  </div>
+                </div>
+              </aside>
+              <!-- //aside-content-box -->
+              <article class="article-report-content-box">
+                <div class="article-detail-info-box">
+                  <div class="flow">
+                    <span>매거진</span> 
+                    <i class="icon-box icon-arrow-flow-right">></i>
+                    <span id="publish-preview-category"></span>
+                  </div>
+                  <div class="article-report-title" id="publish-preview-title"></div>
+                  <div class="article-report-summary" id="publish-preview-summary"></div>
+                </div>
+                <!-- //article-detail-info-box -->
+                <div class="article-report-content editor-content-box" id="publish-preview-content">                 
+                </div>
+                <!-- //article-report-content -->
+
+                <!-- 태그 박스 -->
+                <div class="tag-box">
+                  <span id="publish-preview-tag1"></span>
+                  <span id="publish-preview-tag2"></span>
+                  <span id="publish-preview-tag3"></span>
+                </div>
+                <!-- //태그 박스 -->
+              </article>
+              <!-- //article-report-content-box -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-ok popup-close">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- alert 팝업 -->
+   <div class="layer-popup full-scroll system-popup" id="publishAlertPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title" id="publish-alert-message">
+            <!-- <strong>제목입니다.</strong> -->
+          </div>
+          <!-- <div class="popup-common-text">서브텍스트입니다.</div> -->
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-ok popup-close" id="alert-OK">확인</button>
+        </div>
+      </div>
+    </div>
+   </div>
+
+  <!-- confirm 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="publishConfirmPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title" id="publish-confirm-message">
+            <!-- <strong>등록/수정을 취소하시겠어요?</strong> -->
+          </div>
+          <!-- <div class="popup-common-text">등록/수정을 취소하시겠어요?ㄴ</div> -->
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group half">
+          <button type="button" class="btn btn-cancel popup-close">취소</button>
+          <button type="button" class="btn btn-ok popup-close" id="confirm-OK">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

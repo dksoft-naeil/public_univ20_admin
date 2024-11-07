@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"  content="width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, maximum-scale=1.0" />
+  <meta name="title" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <link rel="icon" href="../../../resources/images/favicon.ico" />
+  <link rel="stylesheet" href="../../../resources/plugins/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/jquery-ui.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-time-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-date-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/dropzone/dropzone.min.css"  />
+  <link rel="stylesheet" href="../../../resources/plugins/cropper/cropper.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/froala/froala_editor.pkgd.min.css" />
+  <link rel="stylesheet" href="../../../resources/css/style.css" />
+  <script src="../../../resources/plugins/jquery-3.7.1.min.js"></script>
+  <script src="../../../resources/plugins/swiper/swiper-bundle.min.js"></script>
+  <script src="../../../resources/plugins/datepicker/jquery-ui.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-time-picker.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-date-picker.js"></script>
+  <script src="../../../resources/plugins/gsap/gsap.min.js"></script>
+  <script src="../../../resources/plugins/fontawesome/fontawesome.js"></script>
+  <script src="../../../resources/plugins/dropzone/dropzone.min.js"></script>
+  <script src="../../../resources/plugins/cropper/cropper.js"></script>
+  <script src="../../../resources/plugins/froala/froala_editor.pkgd.min.js"></script>
+  <script src="../../../resources/js/common-ui.js"></script>
+  <script src="../../../resources/js/point.js"></script>
+  <script src="../../../resources/js/util.js"></script>
+  <script src="../../../resources/js/base.js"></script>
+  <title>관리자</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <!-- 헤더 -->
+    <header id="header">
+      <div class="header-inner">
+        <h1 class="header-logo">
+          <a href="../dashboard/index.html"><img src="../../../resources/images/layout/img-univ-logo.svg" alt="" class="img-logo" /></a>
+        </h1>
+        <div class="header-util">
+          <div class="header-user">
+            <div class="image">
+              <img src="../../../resources/images/layout/icon-user-image.png" alt="로그인이미지" />
+            </div>
+            <p class="name">홍길동(honggildong@abc.com)</p>
+          </div>
+          <div class="header-menu">
+         <div class="header-menu-item">
+              <a href="../login/change-password.html" title="비밀번호 변경" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-password.png" alt="비밀번호 아이콘" />
+                <span>비밀번호 변경</span>
+              </a>
+            </div>
+            <div class="header-menu-item" onclick="logout()">
+              <a href="javascript:void(0);" title="로그아웃" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-logout.png" alt="로그아웃 아이콘" />
+                <span>로그아웃</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="mobile-navigation-menu" onclick="window.mobileMenuController.open('','#sideBarContainer')">
+          <span class="icon"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 사이드바 -->
+    <div id="sideBarContainer">
+      <div class="sidebar-container" id="sideBarContainer">
+        <div class="mobile-head-box">
+          <button type="button" class="btn-close" onclick="window.mobileMenuController.close('', '#sideBarContainer')">닫기</button>
+          <!-- <button type="button" class="btn-close" onclick="alert('sidebar')">닫기</button> -->
+          <div class="info-area">
+            <div class="name-area">
+              <strong class="name">김에스케이</strong>
+              <div class="position">부문관리자</div>
+            </div>
+            <div class="util-info">SK이노베이션 / 기업문화 부문 / 인재영업팀</div>
+          </div>
+          <div class="btn-group">
+            <a href="../login/change-password.html" class="item">비밀번호 변경</a>
+            <a href="javascript:void(0);" class="item">로그아웃</a>
+          </div>
+        </div>
+        <button type="button" class="btn-sidebar-toggle">사이드바 토글 버튼</button>
+        <aside class="sidebar" id="sideBar">
+          <div class="nav-menu-container">
+            <div class="nav-menu-wrapper">
+              <div class="nav-menu">
+                <a href="../dashboard/index.html" class="nav-menu-item solo">
+                  <span class="icon">
+                <img src="../../../resources/images/layout/icon-sidebar-dashboard.png" alt="" />
+              </span>
+                  <span class="text">대시보드</span>
+                </a>
+              </div>
+              <!-- 해당 메뉴일때 active 클래스 추가 -->
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">전체 공지</span>
+                </a>
+                <!-- 해당 메뉴일때 open 클래스 추가 -->
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../notice/popup-list.html">공지 팝업</a></div>
+                  <div class="sub-menu-item"><a href="../notice/notification-list.html">공지 알림</a></div>
+                </div>
+              </div>
+           <div class="nav-menu">
+                <a href="../ad-banner/ad-banner-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">광고 배너</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="../main/main-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-chart.png" alt="" /></span>
+                  <span class="text">메인 화면</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">매거진</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../magazine/magazine-article-register.html">기사 등록</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-list.html">전체 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-campus-list.html">캠퍼스 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-lifestyle-list.html">라이프스타일 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-career-list.html">커리어 기사</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">글 쓰는 20대</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../voice/topic-of-month-list.html">이달의 주제</a></div>
+                  <div class="sub-menu-item"><a href="../voice/all-article-list.html">전체 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-completed-article-list.html">작성 완료 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-mentoring-article-list.html">수정(첨삭)중 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/publish-article-list.html">발행 기사 </a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <!-- 서브 메뉴 없을경우 solo클래스 추가 -->
+                <a href="../story/story-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">대학생이 만든 매거진</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">커뮤니티</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../community/community-list-all.html">전체 글 </a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-daily.html">일상</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-romance.html">연애</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-course.html">진로</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-school.html">우리 학교</a></div>
+                  <div class="sub-menu-item"><a href="../community/notice-list.html">공지 목록</a></div>
+                </div>                
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-list-detail.png" alt="" /></span>
+                  <span class="text">캘린더</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../calendar/calendar-list.html">전체 캘린더</a></div>
+                  <div class="sub-menu-item"><a href="../calendar/before-accord-calendar-list.html">승인 대기 캘린더</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-mail.png" alt="" /></span>
+                  <span class="text">제보하기 /<br class="pc-show" />표지 모델 신청 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../report-proposal/report-list.html">제보하기</a></div>
+                  <div class="sub-menu-item"><a href="../report-proposal/proposal-list.html">표지 모델 신청</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-headset.png" alt="" /></span>
+                  <span class="text">공지사항/FAQ/<br class="pc-show" />문의신고</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../etc/notice-list.html">공지사항</a></div>
+                  <div class="sub-menu-item"><a href="../etc/FAQ-list.html">FAQ</a></div>
+                  <div class="sub-menu-item"><a href="../etc/qna-list.html">문의 / 신고</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ticket.png" alt="" /></span>
+                  <span class="text">이달의 미션 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../mission/mission-board.html">미션 현황</a></div>
+                  <div class="sub-menu-item"><a href="../mission/mission-completed-member-list.html">미션 달성 회원</a></div>
+                </div>
+              </div>
+              <div class="nav-menu open active">
+                <a href="../point/point-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ready.png" alt="" /></span>
+                  <span class="text">포인트 </span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-volunteer.png" alt="" /></span>
+                  <span class="text">멤버 관리 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../member/member-list.html">회원</a></div>
+                  <div class="sub-menu-item"><a href="../member/manager-list.html">관리자</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-plus-file.png" alt="" /></span>
+                  <span class="text">기초 자료 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../basic-data/school-list.html">학교 정보</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <!-- 컨텐츠 -->
+    <div id="pageWrapper">
+      <main id="mainContent">
+        <div class="page-title">
+          <h2 class="title">상세</h2>
+          <div class="breadcrumb">
+            <div class="icon-home"></div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">포인트</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">상세</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">회원 정보 </strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">이름</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text" id="point-name">김내일</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">닉네임</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text" id="point-nickname">닉네임은최대열두자임다요</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">이메일</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text"  id="point-email"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">연락처</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text" id="point-mobile"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">회원 권한</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text" id="point-grade">대학생 인증 회원(내일대학교)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">입금 상태</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">상태</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text" id="point-settlement-state"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">포인트 입금 이력 </strong>
+          </div>
+
+          <div class="data-table">
+            <div class="table-inner">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="size-index">No.</th>
+                    <th>입금 신청 포인트</th>
+                    <th>입금 완료 금액</th>
+                    <th>입금 완료일</th>
+                  </tr>
+                </thead>
+                <tbody id="settlement-list_grid">              
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="pagination" class="pagination-container">
+            <ul class="pagination" id="settlement-pagination">
+            
+            </ul>
+          </div>
+
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">계좌 정보(선택) </strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">은행</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <input type="text" id="point-bank-name" name="autocomplete01" placeholder="자동 완성 입력" class="form-input" autocomplete="on" />
+
+                      <script>
+                        var availableCity = ['국민', '기업', '농협', '산업', '수협', '신한', '신한 제주', '수협', '신협', '우리', '하나', '한국씨티', '카카오뱅크', '케이뱅크', '토스뱅크', '경남', '광주', '아이엠뱅크(대구)', '부산', '전북', '새마을', '우체국', '저축은행', '지역농축협', '도이치', '중국', '중국건설', '중국공상', 'BNP파리바', 'BOA', 'HSBC', 'JP모간', 'SC', '산림조합'];
+                        // var availableCity = [];
+                        $('#point-bank-name').autocomplete({
+                          select: function(event, ui) {
+                            if (ui.item.value == '') {
+                              event.preventDefault();
+                            }
+                          },
+                          source: availableCity,
+                          delay: 150,
+                          minLength: 1,
+                          response: function(event, ui) {
+                            console.log();
+                            if (!ui.content.length) {
+                              var noResult = {
+                                value: '',
+                                label: $(this).val(),
+                              };
+                              ui.content.push(noResult);
+                            }
+                          },
+                        });
+
+                        $.ui.autocomplete.prototype._renderItem = function(ul, item) {
+                          if (item.value) {
+                            var t = String(item.value).replace(new RegExp(this.term, 'gi'), '<strong>$&</strong>');
+                            return $('<li></li>')
+                              .data('item.autocomplete', item)
+                              .append('<div>' + t + '</div>')
+                              .appendTo(ul);
+                          } else {
+                            return $('<li></li>')
+                              .data('item.autocomplete', item)
+                              .append('<div class="no-result">' + '검색결과가 없습니다. (직접입력)' + '</div>')
+                              .appendTo(ul);
+                          }
+                        };
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label">
+                  <div class="label">계좌 번호</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-6">
+                      <div class="input-cover">
+                        <div class="cover-inner">
+                          <input type="tel" id="point-bank-account" name="numberOnly" placeholder="하이픈(-) 없이 입력" class="form-input input-active" oninput="this.value = window.onlyNumber(this.value)" autocomplete="off" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-bottom-btn-group between">
+          <div class="item">
+            <a href="./point-list.html" class="btn medium dark border round"> 목록 </a>
+          </div>
+          <div class="item" style="display:flex;flex-direction:row">
+            <a href="javascript:void(0)" class="btn medium primary round" id="complete-income-guide" onclick="checkDetail()"> 입금 완료 안내 </a>
+            <a href="javascript:void(0)" class="btn medium primary round" id="save-account" onclick="saveBankAccount()"> 계좌 정보 저장 </a>
+            <a href="javascript:void(0)" class="btn medium slightly round disabled" id="complete-income"> 입금 완료 </a>
+          </div>
+        </div>
+      </main>
+      <!-- 푸터 -->
+      <footer id="footer">
+        <div class="copyright">©UNIVTOMORROW. ALL RIGHTS RESERVED.</div>
+      </footer>
+
+      <!-- // 푸터 -->
+    </div>
+    <!-- //컨텐츠 -->
+  </div>
+
+  <!-- 삭제 사유 입력 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="deleteReasonPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title">
+            <strong>선택한 매거진의 삭제 사유를 선택해 주세요.<br />삭제된 메거진은 복구할 수 없습니다.</strong>
+          </div>
+          <div class="popup-common-formfield">
+            <div class="form-item">
+              <div class="form-field">
+                <select name="select" class="form-select medium full">
+                  <option value="">삭제 사유 선택</option>
+                  <option value="">유사 글 반복적 게시</option>
+                  <option value="">욕설, 혐오, 비하 내용 포함</option>
+                  <option value="">기타</option>
+                </select>
+                <!-- 기타 사유 선택시 -->
+                <textarea   class="form-textarea full mt20" placeholder="기타 사유 입력"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-cancel popup-close">취소</button>
+          <button type="button" class="btn btn-ok">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- confirm 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="pointConfirmPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title" id="point-confirm-message">
+            <strong>선택한 제보기사를 삭제하시겠어요? 삭제된 제보 기사는 복구할 수 없습니다.</strong>
+          </div>
+          <!-- <div class="popup-common-text">텍스트</div> -->
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group half">
+          <button type="button" class="btn btn-cancel popup-close">취소</button>
+          <button type="button" class="btn btn-ok popup-close" id="confirm-OK">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- alert 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="pointAlertPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title" id="point-alert-message">
+            <strong>제목입니다.</strong>
+          </div>
+          <!-- <div class="popup-common-text">서브텍스트입니다.</div> -->
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-ok popup-close" id="alert-OK">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

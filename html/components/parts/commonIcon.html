@@ -1,0 +1,136 @@
+<div class="component-content common-icon" id="componentIcon">
+  <div class="component-item">
+    <h2 class="component-title">공통 아이콘</h2>
+    <div class="component-body">
+      <ul class="component-sub-text">
+        <li>프로젝트에 필요한 공통 아이콘등을 모아두는 곳입니다.</li>
+        <li>공통이 많은 프로젝트 또는 협업을 할경우 아이콘을 모아두면 효율적 사용이 가능합니다.</li>
+      </ul>
+      <div class="component-result">
+        <div class="common-icon-part">
+          <h4>- 주의 문구</h4>
+          <div class="common-warning-text">
+            <i class="icon"></i>
+            <span class="text">공지 팝업은 메인 페이지에 노출되는 팝업입니다.<br />공지 팝업은 텍스트형, 이미지형 하나를 선택해 게시할 수 있으며, 최대 1개까지 메인 페이지에 노출됩니다. (동시에 2개 이상 노출 불가능)</span>
+          </div>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 숫자 카운팅</h4>
+          <div class="number-count" data-number="3333">0</div>
+          <button type="button" class="btn medium primary" onclick="numberCounter('.number-count')">카운트 버튼</button>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 즐겨찾기</h4>
+          <!-- 즐겨찾기 활성화 클래스는 active -->
+          <button type="button" class="common-icon-bookmark active"></button>
+
+          <!-- 즐겨찾기 활성화 클래스는 active -->
+          <i class="common-icon-bookmark"></i>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 햄버거메뉴 버튼</h4>
+          <button type="button" class="mobile-navigation-menu" id="btnMobileMenu" onclick="mobileMenuController.toggle('#btnMobileMenu','', true)">
+            <span class="icon"></span>
+          </button>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 스위치 아이콘</h4>
+          <div class="switch-container">
+            <div class="switch-item column">
+              <div class="switch-text">스위치 텍스트(on상태 작동안됨)</div>
+              <div class="switch-icon">
+                <input type="checkbox" class="switch-input" checked disabled />
+                <div class="switch-label active">
+                  <div class="switch-button">
+                    <span class="btn-on-off">on/off 버튼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="switch-item column">
+              <div class="switch-text">스위치 텍스트</div>
+              <div class="switch-icon">
+                <input type="checkbox" class="switch-input" />
+                <div class="switch-label">
+                  <div class="switch-button">
+                    <span class="btn-on-off">on/off 버튼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <div class="switch-container small">
+            <div class="switch-item column">
+              <div class="switch-text">스위치 텍스트</div>
+              <div class="switch-icon">
+                <input type="checkbox" class="switch-input" />
+                <div class="switch-label">
+                  <div class="switch-button">
+                    <span class="btn-on-off">on/off 버튼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="common-icon-part">
+          <h4>- breadcrumb</h4>
+          <div class="breadcrumb">
+            <div class="icon-home"></div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">신규 공고</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">공고 등록</div>
+          </div>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 스피너</h4>
+          <div class="spinner-container">
+            <div class="input-area">
+              <input type="text" class="form-input" placeholder="숫자" autocomplete="off" oninput="this.value = window.onlyNumber(this.value)" />
+              <div class="text">명</div>
+            </div>
+            <div class="btn-area">
+              <button type="button" class="btn-spinner btn-decrease">감소</button>
+              <button type="button" class="btn-spinner btn-increase">증가</button>
+            </div>
+          </div>
+          <br />
+          <div class="spinner-container small">
+            <div class="input-area">
+              <input type="text" class="form-input small" placeholder="숫자" autocomplete="off" oninput="this.value = window.onlyNumber(this.value)" />
+            </div>
+            <div class="btn-area">
+              <button type="button" class="btn-spinner btn-decrease">감소</button>
+              <button type="button" class="btn-spinner btn-increase">증가</button>
+            </div>
+          </div>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 별점 선택</h4>
+          <div class="rating-select-container">
+            <input type="radio" id="ratingStar01" name="ratingStar" />
+            <label for="ratingStar01">1점</label>
+            <input type="radio" id="ratingStar02" name="ratingStar" />
+            <label for="ratingStar02">2점</label>
+            <input type="radio" id="ratingStar03" name="ratingStar" />
+            <label for="ratingStar03">3점</label>
+            <input type="radio" id="ratingStar04" name="ratingStar" />
+            <label for="ratingStar04">4점</label>
+            <input type="radio" id="ratingStar05" name="ratingStar" checked />
+            <label for="ratingStar05">5점</label>
+          </div>
+        </div>
+        <div class="common-icon-part">
+          <h4>- 공개 / 숨김 버튼</h4>
+          <div class="toggle-display-btn">
+            <button type="button" class="item active">공개</button>
+            <button type="button" class="item">숨김</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

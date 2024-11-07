@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"  content="width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, maximum-scale=1.0" />
+  <meta name="title" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <link rel="icon" href="../../../resources/images/favicon.ico" />
+  <link rel="stylesheet" href="../../../resources/plugins/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/jquery-ui.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-time-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-date-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/dropzone/dropzone.min.css"  />
+  <link rel="stylesheet" href="../../../resources/plugins/cropper/cropper.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/froala/froala_editor.pkgd.min.css" />
+  <link rel="stylesheet" href="../../../resources/css/style.css" />
+  <script src="../../../resources/plugins/jquery-3.7.1.min.js"></script>
+  <script src="../../../resources/plugins/swiper/swiper-bundle.min.js"></script>
+  <script src="../../../resources/plugins/datepicker/jquery-ui.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-time-picker.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-date-picker.js"></script>
+  <script src="../../../resources/plugins/gsap/gsap.min.js"></script>
+  <script src="../../../resources/plugins/fontawesome/fontawesome.js"></script>
+  <script src="../../../resources/plugins/dropzone/dropzone.min.js"></script>
+  <script src="../../../resources/plugins/cropper/cropper.js"></script>
+  <script src="../../../resources/plugins/froala/froala_editor.pkgd.min.js"></script>
+  <script src="../../../resources/js/common-ui.js"></script>
+  <script src="../../../resources/js/base.js"></script>
+  <script src="../../../resources/js/authorize.js"></script>
+  <script src="../../../resources/js/util.js"></script>
+  <title>관리자</title>
+</head>
+
+<body>
+  <div id="container">
+    <!-- 컨텐츠 -->
+    <div class="login-page-content">
+      <div class="logo">
+        <img src="../../../resources/images/layout/img-univ-logo.svg" alt="UNIV 20" />
+      </div>
+      <div class="content-container">
+        <div class="section-inner">
+          <div class="title-area">
+            <h2 class="title">Univ20</h2>
+            <div class="label">관리자</div>
+          </div>
+          <div class="form-layout">
+            <div class="form-asset-container">
+              <div class="form-asset">
+                <label for="emailId" class="form-label">아이디 (이메일)</label>
+                <div class="form-field">
+                  <div class="input-cover">
+                    <!-- 오류일경우 error 클래스 추가 -->
+                    <div class="input-wrapper error">
+                      <input type="text" id="emailId"  title="이메일 아이디" class="form-input" autocomplete="off" onkeypress="searchStart(event)"/>
+                    </div>
+                    <!-- <div class="form-guide-text warning right">※ 아이디를 입력하세요.</div> -->
+                  </div>
+                </div>
+              </div>
+              <div class="form-asset">
+                <label for="password" class="form-label">비밀번호</label>
+                <div class="form-field">
+                  <div class="input-cover float right-space small type-change">
+                    <!-- label의 for값과 input id값이 동일해야합니다. -->
+                    <div class="cover-inner">
+                      <input type="password" id="password"  title="비밀번호" class="form-input input-active" autocomplete="off" onkeypress="searchStart(event)"/>
+                      <span class="etc-right">
+                          <button type="button" class="btn-type-change">비밀번호 보기/감추기</button>
+                        </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-asset selector">
+                <div class="selector-cover checkbox">
+                  <label class="label">
+                    <input type="checkbox"   />
+                    <span class="label-text">
+                        <span class="selector"></span>
+                    아이디 저장   
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <button type="button" class="btn large primary full round btn-submit" onclick="verify(1)" >로그인</button>
+              <div class="guide-text">
+                <a href="javascript:layerPopup.openPopup('passwordSearchPopup', true)">비밀번호 찾기</a>
+              </div>
+            </div>
+            <div class="page-footer">
+              <div class="item">©UNIVTOMORROW. ALL RIGHTS RESERVED.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- //컨텐츠 -->
+
+    <!-- 비밀번호초기화 팝업 -->
+  </div>
+
+  <!-- 비밀번호찾기 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="passwordSearchPopup">
+    <div class="popup-container medium">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title">
+            <strong>비밀번호 초기화 </strong>
+          </div>
+          <div class="popup-common-formfield">
+            <div class="form-item">
+              <label for="" class="form-label">아이디(이메일)</label>
+              <div class="form-field">
+                <div class="input-cover">
+                  <div class="input-wrapper">
+                    <input type="text"  id="userId" title="이메일 아이디" class="form-input" maxlength="50" autocomplete="off" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-item">
+              <label for="" class="form-label">이름</label>
+              <div class="form-field">
+                <div class="input-cover">
+                  <div class="input-wrapper">
+                    <input type="text"  id="userName" title="이름" class="form-input" maxlength="20" autocomplete="off" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-cancel popup-close">취소</button>
+          <button type="button" class="btn btn-ok" onclick="issueTempPassword()">임시 비밀번호 발급</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- alert 팝업 -->
+  <div class="layer-popup full-scroll system-popup" id="loginAlertPopup">
+    <div class="popup-container small">
+      <div class="popup-content">
+        <button type="button" class="btn-popup-close popup-close">닫기</button>
+        <div class="popup-inner">
+          <div class="popup-common-title" id="loginAlertMessage">
+            <strong>제목입니다.</strong>
+          </div>
+          <!-- <div class="popup-common-text">서브텍스트입니다.</div> -->
+        </div>
+      </div>
+      <div class="popup-footer">
+        <div class="btn-group">
+          <button type="button" class="btn btn-ok popup-close" id="alert-OK">확인</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport"  content="width=device-width, initial-scale=1.0, user-scalable=no, height=device-height, maximum-scale=1.0" />
+  <meta name="title" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="" />
+  <link rel="icon" href="../../../resources/images/favicon.ico" />
+  <link rel="stylesheet" href="../../../resources/plugins/swiper/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/jquery-ui.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-time-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/datepicker/tui-date-picker.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/dropzone/dropzone.min.css"  />
+  <link rel="stylesheet" href="../../../resources/plugins/cropper/cropper.css" />
+  <link rel="stylesheet" href="../../../resources/plugins/froala/froala_editor.pkgd.min.css" />
+  <link rel="stylesheet" href="../../../resources/css/style.css" />
+  <script src="../../../resources/plugins/jquery-3.7.1.min.js"></script>
+  <script src="../../../resources/plugins/swiper/swiper-bundle.min.js"></script>
+  <script src="../../../resources/plugins/datepicker/jquery-ui.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-time-picker.js"></script>
+  <script src="../../../resources/plugins/datepicker/tui-date-picker.js"></script>
+  <script src="../../../resources/plugins/gsap/gsap.min.js"></script>
+  <script src="../../../resources/plugins/fontawesome/fontawesome.js"></script>
+  <script src="../../../resources/plugins/dropzone/dropzone.min.js"></script>
+  <script src="../../../resources/plugins/cropper/cropper.js"></script>
+  <script src="../../../resources/plugins/froala/froala_editor.pkgd.min.js"></script>
+  <script src="../../../resources/js/common-ui.js"></script>
+  <script src="../../../resources/js/voice.js"></script>
+  <script src="../../../resources/js/util.js"></script>
+  <script src="../../../resources/js/base.js"></script>
+  <title>관리자</title>
+
+</head>
+
+<body>
+  <div id="container">
+    <!-- 헤더 -->
+    <header id="header">
+      <div class="header-inner">
+        <h1 class="header-logo">
+          <a href="../dashboard/index.html"><img src="../../../resources/images/layout/img-univ-logo.svg" alt="" class="img-logo" /></a>
+        </h1>
+        <div class="header-util">
+          <div class="header-user">
+            <div class="image">
+              <img src="../../../resources/images/layout/icon-user-image.png" alt="로그인이미지" />
+            </div>
+            <p class="name">홍길동(honggildong@abc.com)</p>
+          </div>
+          <div class="header-menu">
+         <div class="header-menu-item">
+              <a href="../login/change-password.html" title="비밀번호 변경" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-password.png" alt="비밀번호 아이콘" />
+                <span>비밀번호 변경</span>
+              </a>
+            </div>
+            <div class="header-menu-item" onclick="logout()">
+              <a href="javascript:void(0);" title="로그아웃" class="header-menu-btn">
+                <img src="../../../resources/images/layout/icon-header-logout.png" alt="로그아웃 아이콘" />
+                <span>로그아웃</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="mobile-navigation-menu" onclick="window.mobileMenuController.open('','#sideBarContainer')">
+          <span class="icon"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 사이드바 -->
+    <div id="sideBarContainer">
+      <div class="sidebar-container" id="sideBarContainer">
+        <div class="mobile-head-box">
+          <button type="button" class="btn-close" onclick="window.mobileMenuController.close('', '#sideBarContainer')">닫기</button>
+          <!-- <button type="button" class="btn-close" onclick="alert('sidebar')">닫기</button> -->
+          <div class="info-area">
+            <div class="name-area">
+              <strong class="name">김에스케이</strong>
+              <div class="position">부문관리자</div>
+            </div>
+            <div class="util-info">SK이노베이션 / 기업문화 부문 / 인재영업팀</div>
+          </div>
+          <div class="btn-group">
+            <a href="../login/change-password.html" class="item">비밀번호 변경</a>
+            <a href="javascript:void(0);" class="item">로그아웃</a>
+          </div>
+        </div>
+        <button type="button" class="btn-sidebar-toggle">사이드바 토글 버튼</button>
+        <aside class="sidebar" id="sideBar">
+          <div class="nav-menu-container">
+            <div class="nav-menu-wrapper">
+              <div class="nav-menu active">
+                <a href="../dashboard/index.html" class="nav-menu-item solo">
+                  <span class="icon">
+                <img src="../../../resources/images/layout/icon-sidebar-dashboard.png" alt="" />
+              </span>
+                  <span class="text">대시보드</span>
+                </a>
+              </div>
+              <!-- 해당 메뉴일때 active 클래스 추가 -->
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">전체 공지</span>
+                </a>
+                <!-- 해당 메뉴일때 open 클래스 추가 -->
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../notice/popup-list.html">공지 팝업</a></div>
+                  <div class="sub-menu-item"><a href="../notice/notification-list.html">공지 알림</a></div>
+                </div>
+              </div>
+           <div class="nav-menu">
+                <a href="../ad-banner/ad-banner-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice.png" alt="" /></span>
+                  <span class="text">광고 배너</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="../main/main-board.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-chart.png" alt="" /></span>
+                  <span class="text">메인 화면</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">매거진</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../magazine/magazine-article-register.html">기사 등록</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-list.html">전체 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-campus-list.html">캠퍼스 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-lifestyle-list.html">라이프스타일 기사</a></div>
+                  <div class="sub-menu-item"><a href="../magazine/magazine-career-list.html">커리어 기사</a></div>
+                </div>
+              </div>
+              <div class="nav-menu open active">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">글 쓰는 20대</span>
+                </a>
+                <div class="sub-menu open active">
+                  <div class="sub-menu-item open"><a href="../voice/topic-of-month-list.html">이달의 주제</a></div>
+                  <div class="sub-menu-item"><a href="../voice/all-article-list.html">전체 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-completed-article-list.html">작성 완료 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/editing-mentoring-article-list.html">수정(첨삭)중 기사 </a></div>
+                  <div class="sub-menu-item"><a href="../voice/publish-article-list.html">발행 기사 </a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <!-- 서브 메뉴 없을경우 solo클래스 추가 -->
+                <a href="../story/story-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">대학생이 만든 매거진</span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-notice-state.png" alt="" /></span>
+                  <span class="text">커뮤니티</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../community/community-list-all.html">전체 글 </a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-daily.html">일상</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-romance.html">연애</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-course.html">진로</a></div>
+                  <div class="sub-menu-item"><a href="../community/community-list-school.html">우리 학교</a></div>
+                  <div class="sub-menu-item"><a href="../community/notice-list.html">공지 목록</a></div>
+                </div>                
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-list-detail.png" alt="" /></span>
+                  <span class="text">캘린더</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../calendar/calendar-list.html">전체 캘린더</a></div>
+                  <div class="sub-menu-item"><a href="../calendar/before-accord-calendar-list.html">승인 대기 캘린더</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-mail.png" alt="" /></span>
+                  <span class="text">제보하기 /<br class="pc-show" />표지 모델 신청 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../report-proposal/report-list.html">제보하기</a></div>
+                  <div class="sub-menu-item"><a href="../report-proposal/proposal-list.html">표지 모델 신청</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-headset.png" alt="" /></span>
+                  <span class="text">공지사항/FAQ/<br class="pc-show" />문의신고</span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../etc/notice-list.html">공지사항</a></div>
+                  <div class="sub-menu-item"><a href="../etc/FAQ-list.html">FAQ</a></div>
+                  <div class="sub-menu-item"><a href="../etc/qna-list.html">문의 / 신고</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ticket.png" alt="" /></span>
+                  <span class="text">이달의 미션 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../mission/mission-board.html">미션 현황</a></div>
+                  <div class="sub-menu-item"><a href="../mission/mission-completed-member-list.html">미션 달성 회원</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="../point/point-list.html" class="nav-menu-item solo">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-ready.png" alt="" /></span>
+                  <span class="text">포인트 </span>
+                </a>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-volunteer.png" alt="" /></span>
+                  <span class="text">멤버 관리 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../member/member-list.html">회원</a></div>
+                  <div class="sub-menu-item"><a href="../member/manager-list.html">관리자</a></div>
+                </div>
+              </div>
+              <div class="nav-menu">
+                <a href="javascript:void(0);" class="nav-menu-item">
+                  <span class="icon"><img src="../../../resources/images/layout/icon-sidebar-plus-file.png" alt="" /></span>
+                  <span class="text">기초 자료 </span>
+                </a>
+                <div class="sub-menu">
+                  <div class="sub-menu-item"><a href="../basic-data/school-list.html">학교 정보</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- 컨텐츠 -->
+    <div id="pageWrapper">
+      <main id="mainContent">
+        <div class="page-title">
+          <h2 class="title">기사 상세</h2>
+          <div class="breadcrumb">
+            <div class="icon-home"></div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">글 쓰는 20대</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">전체 기사</div>
+            <i class="icon-arrow"></i>
+            <div class="depth-name">상세</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">기본 내용</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">기사 상태</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">작성 완료</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">첨삭 멘토링 수락 여부</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">Y</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">등록일</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">2024. 10. 31. 23:59</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">작성자</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">이름</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">김내일</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">닉네임</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">닉네임은최대열두자임다요</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">이메일</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">UNIV20official@univ.me</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">연락처</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">010-1234-5678</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">회원 권한</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">대학생 인증 회원(내일대학교)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">주제</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">제목</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">주제 구분을 위해 관리자에서 등록한 최대 50자 제목입니다.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">키워드</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">키워드최대열자임다요</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">상세 주제</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">관리자에서 등록한 글쓰기 주제가 노출되는 영역 입니다. 최대 오십자까지 노출됩니다.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">등록일</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">2024. 10. 01. 09:00</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">대표 이미지</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">이미지</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div><img src="../../../resources/images/_temp/img-temp-01.jpg" alt="" /></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">제목 및 한 줄 소개 </strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">제목</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">회원이 사용자에서 직접 등록한 기사 타이틀입니다. 최대 50자까지 등록 가능합니다.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">한 줄 소개</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">회원이 등록한 기사 요약 내용. 최대 30자까지 등록.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">본문</strong>
+          </div>
+
+          <!-- 에디터 상세 -->
+          <div class="article-report-content-box">
+            <div style="overflow-y: auto; overflow-x: hidden; max-height: 800px; padding: 10px">
+              <div class="article-report-content editor-content-box">
+                <!-- 링크 포함 텍스트 -->
+
+                <div>
+                  3일 후면 드디어 개강이다. 여행도 떠나기 전이 가장 설레듯이 개강도 상상만 하는 지금이 가장 설레는 법이다. 막상 시작하면 지칠 통학길도 아직은 새롭다. 혹시나 새 인연을 만나지는 않을지 기대하며 옷과 신발을 사기도 한다. 이번 3월호 표지에는 눈 밑 점이 매력적인 박세현과 개강의 설렘을 담았다. 박세현과 통학을 함께한
+                  <a href="javascript:void(0);" target="_blank" class="link-text">Tmoney x 라인프렌즈 협업 카드</a>도 확인해 보자.
+                </div>
+
+                <!--  -->
+
+                <!-- //링크 포함 텍스트 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 이미지 캡션글 -->
+                <div class="image-caption-box">
+                  <div class="image-box">
+                    <img src="../../../resources/images/_temp/temp-caption-thumbnail-image01.png" alt="" />
+                    <span class="desc">[이미지 캡션글] 이미지 캡션글입니다. 최대 글자수 제한은 없습니다.</span>
+                  </div>
+                </div>
+                <!-- //이미지 캡션글 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 질문 답변 텍스트 -->
+                <div>
+                  <h3>Q. 간단한 자기소개 부탁한다.</h3>
+                  수원대학교 문화예술학부 연극전공 박세현이다. 교수님들이 “이제 학교 그만 다닐 때 되지 않았냐, 좀 나가라”라고 하는 20학번이다(웃음). 그런 말을 들으면 ‘저도 그만 다니고 싶어요.’라고 속으로만 생각하는 INFJ다.
+                </div>
+                <!-- //질문 답변 텍스트 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 슬라이드 이미지 캡션글 -->
+                <div class="slider-caption-box">
+                  <div class="swiper-container slider-caption">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-inline-image01.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-inline-image01.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-inline-image01.png" alt="" />
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                  </div>
+                  <div class="desc-text">
+                    <span>[슬라이드 이미지 캡션글] 슬라이드 이미지 캡션글입니다. 최대 글자수 제한은 없습니다.</span>
+                    <span>에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 이미지 영역입니다.</span>
+                  </div>
+                </div>
+                <!-- //슬라이드 이미지 캡션글 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 질문 답변 텍스트 -->
+                <div>
+                  <h3>Q. 연극전공이면 화보 촬영이 처음은 아닐 것 같다.</h3>
+                  고등학생들이 보는 잡지인 <모두매거진>의 표지모델을 한 경험이 있다. 그걸 계기로 배우라는 꿈을 꾸게 되었다. 종이 잡지에 나오는 것도 이렇게 좋은데, 스크린 같은 큰 화면에 내가 나오면 얼마나 좋을지 생각했다. 소심한 주인공 병이 있나 보다(웃음).
+                </div>
+                <!-- //질문 답변 텍스트 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 슬라이드 이미지 캡션글 스크롤 -->
+                <div class="slider-caption-scroll-box">
+                  <div class="swiper-container slider-caption-scroll-style slider-scroll">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-calender-thumbnail-image01.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-medium-thumbnail-image12.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-small-thumbnail-image06.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-calender-thumbnail-image01.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-medium-thumbnail-image12.png" alt="" />
+                      </div>
+                      <div class="swiper-slide">
+                        <img src="../../../resources/images/_temp/temp-small-thumbnail-image06.png" alt="" />
+                      </div>
+                    </div>
+                    <div class="swiper-scrollbar"></div>
+                  </div>
+                  <div class="desc-text">
+                    <span>[슬라이드 이미지 캡션글] 슬라이드 이미지 캡션글입니다. 최대 글자수 제한은 없습니다.</span>
+                    <span>에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 이미지 영역입니다.</span>
+                  </div>
+                </div>
+                <!-- //슬라이드 이미지 캡션글 스크롤 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 인용글 타입 일반형 -->
+                <div class="quote-text">
+                  <div class="desc">인용글 타입 "일반형"입니다. 에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 인용글 영역입니다. 인용글 타입 "일반형"입니다. 인용글 타입 "일반형"입니다. 에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 인용글 영역입니다.</div>
+                  <div class="caption">김유니브(대학생, 21세)</div>
+                </div>
+                <!-- //인용글 타입 일반형 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 인용글 타입 박스형 -->
+                <div class="quote-text-box">
+                  <i class="icon-box icon-quotes"></i>
+                  <div class="desc">인용글 타입 "박스형"입니다. 에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 인용글 영역입니다. 인용글 타입 "박스형"입니다. 인용글 타입 "박스형"입니다. 에디터에 퍼블리싱 코드를 직접 삽입해야 구현되는 인용글 영역입니다.</div>
+                  <div class="caption">김유니브(대학생, 21세)</div>
+                  <i class="icon-box icon-quotes-down"></i>
+                </div>
+                <!-- //인용글 타입 박스형 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 질문 답변 텍스트 -->
+                <div>
+                  <h3>Q. 이제 4학년이다. 대학생 때 하고 싶은 버킷리스트는 다 이뤘나?</h3>
+                  대학내일 표지모델이 버킷리스트였다. 대학생 때만 할 수 있는 경험이지 않나. TMI인데 실은 오늘이 내 생일이다. 오늘 오전에 여행을 가려고 항공권을 예매했는데, 표지모델 선정 메시지를 받고 새로 오후 비행기를 끊었다. 후회하지 않는다. 덕분에 행복한 생일 선물을 받았다. 생각해 둔 다음 버킷리스트는 TV에 출연이다. 광고, 드라마, 예능, 어떤 역할이든 상관없다. 지금 당장 떠오르는 예능은 <하트시그널>?
+                    (웃음)
+                </div>
+                <!-- //질문 답변 텍스트 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 유튜브 영상 캡션글 -->
+                <div class="iframe-video-box">
+                  <div class="video">
+                    <iframe id="youtube" src="https://www.youtube.com/embed//WHE29DJ1Ui0?rel=0&loop=0&modestbranding=1&showinfo=0&controls=1" frameborder="0" allowfullscreen="" allow="accelerometer" scrolling="no"></iframe>
+                  </div>
+                  <span class="desc">[유튜브 캡션글] 유튜브 영상 캡션글입니다.</span>
+                </div>
+                <!-- //유튜브 영상 캡션글 -->
+                <!-- 공백 -->
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <!-- //공백 -->
+                <!-- 질문 답변 텍스트 -->
+                <div>
+                  <h3>Q. 마지막으로, 표지모델 지원자들에게 합격 꿀팁을 전하자면?</h3>
+                  다양한 표정과 스타일이 담긴 사진을 보내서 합격한 것 같다. 나와 다른, 혹은 나보다 매력 있는 분들이 많을테니 지원만 잘 한다면 충분히 할 수 있지 않을까? 만약 표지모델 지원을 망설이고 있다면 무조건 지원해라. 대학 시절 잊지 못할 최고의 경험이 될 것이다.
+                </div>
+                <!-- //질문 답변 텍스트 -->
+              </div>
+            </div>
+          </div>
+
+          <script>
+            $(document).ready(function() {
+              var swiperSlide = new Swiper('.slider-caption', {
+                loop: true,
+
+                pagination: {
+                  el: '.swiper-pagination',
+                  clickable: true,
+                },
+                navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+                },
+              });
+
+              var swiperSlide = new Swiper('.slider-scroll', {
+                loop: false,
+                slidesPerView: 'auto',
+                spaceBetween: 24,
+
+                scrollbar: {
+                  el: '.swiper-scrollbar',
+                },
+              });
+            });
+          </script>
+
+        </div>
+        <div class="panel">
+          <div class="panel-title">
+            <strong class="title">태그</strong>
+          </div>
+          <div class="form-container">
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">태그 1</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">태그명최대열자입니다</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="form-row">
+                <div class="form-label pt0">
+                  <div class="label">태그 2</div>
+                </div>
+                <div class="form-fleid">
+                  <div class="col-group">
+                    <div class="col-lg-12">
+                      <div class="form-text">애드벌토리얼</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-bottom-btn-group between">
+          <div class="item">
+            <a href="javascript:void(0);" class="btn medium dark border round"> 목록 </a>
+          </div>
+          <div class="item">
+            <a href="javascript:void(0);" class="btn medium primary round"> 첨삭 멘토링 제안 </a>
+            <a href="javascript:void(0);" class="btn medium slightly border round disabled"> 첨삭 멘토링 제안 중 </a>
+          </div>
+        </div>
+      </main>
+      <!-- 푸터 -->
+      <footer id="footer">
+        <div class="copyright">©UNIVTOMORROW. ALL RIGHTS RESERVED.</div>
+      </footer>
+
+      <!-- // 푸터 -->
+    </div>
+    <!-- //컨텐츠 -->
+  </div>
+</body>
+
+</html>
